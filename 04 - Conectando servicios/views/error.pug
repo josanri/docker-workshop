@@ -1,0 +1,6 @@
+extends layout
+
+block content
+  h1(class="lead mb-3 text-white")= message
+  h2(class="lead mb-3 text-white")= error.status
+  pre(class="lead mb-3 text-white") #{error.stack}

@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  app:
+    image: josesanc02/taller-04
+    environment:
+      - REDIS_HOST=redis
+    ports:
+      - 8080:3000
+    networks:
+      - webnet
+    depends_on:
+      - redis
+  redis:
+    image: redis:latest
+    networks:
+      - webnet
+
+networks:
+  webnet:
