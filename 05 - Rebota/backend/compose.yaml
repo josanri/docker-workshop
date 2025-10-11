@@ -1,0 +1,29 @@
+
+services:
+  server:
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    environment:
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+    networks:
+      - rebota-net
+    depends_on:
+      redis:
+        condition: service_healthy
+
+
+  redis:
+    image: redis:7-alpine
+    networks:
+      - rebota-net
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+    # ports:
+    #   - 6379:6379
+
+networks:
+  rebota-net:
+    driver: bridge
