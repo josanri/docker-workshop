@@ -110,7 +110,7 @@ function resetParticles() {
 }
 
 function setup() {
-    showModal("Finished it", "Congrats")
+    showModal("Something is wrong", "Fix me!");
 	createCanvas(window.innerWidth, window.innerHeight);
 	colorMode(HSB, 360, 100, 100, 1);
 	initializeParticles();
